@@ -1,3 +1,9 @@
+import calculos.CalculadoraDeTiempo;
+import calculos.FiltroRecomendaciones;
+import modelos.Episodio;
+import modelos.Pelicula;
+import modelos.Serie;
+
 public class Principal {
     public static void main(String[] args) {
 
@@ -36,7 +42,32 @@ public class Principal {
         casaDragon.setTemporadas(1);
         casaDragon.setMinutosPorEpisodio(50);
         casaDragon.setEpisodiosPorTemporada(10);
-        System.out.println(casaDragon.getDuracionEnMinutos());
         casaDragon.muestraFichaTecnica();
+        System.out.println(casaDragon.getDuracionEnMinutos());
+
+        
+        Pelicula otraPelicula = new Pelicula();  
+        otraPelicula.setNombre("Matrix");
+        otraPelicula.setFechaDeLanzamiento(1998);
+        otraPelicula.setDuracionEnMinutos(180);
+        otraPelicula.muestraFichaTecnica();
+
+        CalculadoraDeTiempo calculadora = new CalculadoraDeTiempo();
+        calculadora.incluye(miPelicula);
+        calculadora.incluye(casaDragon);
+        calculadora.incluye(otraPelicula);
+        System.out.println("Tiempo necesario para ver tus títulos favoritos: " + calculadora.getTiempoTotal() + " minutos");
+
+
+        FiltroRecomendaciones filtroRecomendaciones = new FiltroRecomendaciones();
+        filtroRecomendaciones.filtra(miPelicula);
+
+        Episodio episodio = new Episodio();
+        episodio.setNumero(1);
+        episodio.setNombre("La acasa Targaryen");
+        episodio.setSerie(casaDragon);
+        episodio.setTotalVisualizaciones(50);
+
+        filtroRecomendaciones.filtra(episodio);
     }
 }

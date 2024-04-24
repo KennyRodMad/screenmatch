@@ -1,3 +1,5 @@
+package modelos;
+
 /*Definimos nuestra clase modelo, la cual contiene todos los atributos que 
 consideramos importantes y que pueden ser heredados a las classes hijas 
 */
@@ -56,25 +58,25 @@ public class Titulo {
     
     
         //Método que retorna el total de las evaluaciones registradas por el contador
-        int getTotalDeLasEvaluaciones(){
+        public int getTotalDeLasEvaluaciones(){
             return totalDeEvaluaciones;
         }
     
         //Creamos uno método o función que nos ayudará a reautilizar nuestros atributos en cada caso de la clase principal
-        void muestraFichaTecnica(){
+        public void muestraFichaTecnica(){
             System.out.println("El nombre de la película es "+ nombre);
             System.out.println("Fue lanzada a inicios del año " + fechaDeLanzamiento);
             System.out.println("Tiene una duración de " + getDuracionEnMinutos() + " minutos");
         }
     
         //creamos un método que permita evaluar las películas, sumando todas las calificaciones de los usuarios
-        void evalua(double nota){
+        public void evalua(double nota){
             sumaDeLasEvaluaciones += nota;
             totalDeEvaluaciones++; //aumenta la contabilización a medida que se hace una nueva evaluación
         }
     
         //creamos un método que calcule la media de calificaciones y nos la retorne como double
-        double calculaMedia(){
+        public double calculaMedia(){
             return sumaDeLasEvaluaciones/totalDeEvaluaciones;
         }
 }

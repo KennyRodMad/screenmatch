@@ -1,3 +1,5 @@
+package modelos;
+
 public class Serie extends Titulo {
 
     //definimos los atributos específicos de la clase película
