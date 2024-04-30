@@ -2,10 +2,15 @@ package modelos;
 
 public class Serie extends Titulo {
 
+
     //definimos los atributos específicos de la clase película
     int temporadas;
     int episodiosPorTemporada;
     int minutosPorEpisodio;
+
+    public Serie(String nombre, int fechaDeLanzamiento) {
+        super(nombre, fechaDeLanzamiento);
+    }
 
     //definimos los métodos settters y getters para cada uno de los atributos
 
@@ -43,4 +48,9 @@ public class Serie extends Titulo {
         return temporadas*episodiosPorTemporada*minutosPorEpisodio;
     }
 
+    @Override
+    public String toString() {
+        return "Serie: " + this.getNombre() + " (" + getFechaDeLanzamiento() + ")";
+    }
+    
 }

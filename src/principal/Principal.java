@@ -1,3 +1,6 @@
+package principal;
+import java.util.ArrayList;
+
 import calculos.CalculadoraDeTiempo;
 import calculos.FiltroRecomendaciones;
 import modelos.Episodio;
@@ -7,13 +10,8 @@ import modelos.Serie;
 public class Principal {
     public static void main(String[] args) {
 
-
         //creamos una instancia de la clase Pelicula(objeto), y los asignamos a la variable miPelicula
-        Pelicula miPelicula = new Pelicula();  
-        /*asignamos valores a los atributos declarados en la clase modelo,
-        invocando el método correspondiente y enviando el valor como parámetro*/
-        miPelicula.setNombre("Residen Evil Apocalipsis");
-        miPelicula.setFechaDeLanzamiento(2000);
+        Pelicula miPelicula = new Pelicula("Residen Evil Apocalipsis", 2000);  
         miPelicula.setDuracionEnMinutos(180);
         miPelicula.setIncluidoEnElPlan(true);
         
@@ -29,16 +27,10 @@ public class Principal {
         //imprimimos el resultado del método que nos calcula la media de calificaciones
         System.out.println("La calificación promedio de la película es: " + miPelicula.calculaMedia());
 
-        
-        //Hacemos lo mismo para la clase Serie
-
-
         //creamos una instancia de la clase Serie(objeto), y los asignamos a la variable miSerie
-        Serie casaDragon = new Serie();  
+        Serie casaDragon = new Serie("La casa del Dragón", 2022);  
         /*asignamos valores a los atributos declarados en la clase modelo,
         invocando el método correspondiente y enviando el valor como parámetro*/
-        casaDragon.setNombre("La casa del Dragón");
-        casaDragon.setFechaDeLanzamiento(2022);
         casaDragon.setTemporadas(1);
         casaDragon.setMinutosPorEpisodio(50);
         casaDragon.setEpisodiosPorTemporada(10);
@@ -46,9 +38,7 @@ public class Principal {
         System.out.println(casaDragon.getDuracionEnMinutos());
 
         
-        Pelicula otraPelicula = new Pelicula();  
-        otraPelicula.setNombre("Matrix");
-        otraPelicula.setFechaDeLanzamiento(1998);
+        Pelicula otraPelicula = new Pelicula("Matrix", 1998);  
         otraPelicula.setDuracionEnMinutos(180);
         otraPelicula.muestraFichaTecnica();
 
@@ -69,5 +59,27 @@ public class Principal {
         episodio.setTotalVisualizaciones(50);
 
         filtroRecomendaciones.filtra(episodio);
+
+        //definiendo una nueva instancia//
+        Pelicula peliculaDeBruno = new Pelicula("El señor de los anillos", 2001); 
+        peliculaDeBruno.setDuracionEnMinutos(180);
+
+        //creamos una lista en donde agregamos todas las peliculas
+        ArrayList<Pelicula> listaDePeliculas = new ArrayList<>(); 
+        listaDePeliculas.add(peliculaDeBruno);
+        listaDePeliculas.add(miPelicula);
+        listaDePeliculas.add(otraPelicula);
+
+        //imprimimos el tamaño de la lista 
+        System.out.println("El tamaño de la película es: "+ listaDePeliculas.size());
+        //imprimimos la primera película de la lista 
+        System.out.println("La primera película de la lista: " + listaDePeliculas.get(0).getNombre());
+        //imprimimos la lista completa
+        System.out.println(listaDePeliculas);
+        //imprimimos la primera película de la lista
+        System.out.println("toString de la película: " + listaDePeliculas.get(0).toString());
+
+
+
     }
 }

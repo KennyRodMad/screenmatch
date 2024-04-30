@@ -4,7 +4,7 @@ package modelos;
 consideramos importantes y que pueden ser heredados a las classes hijas 
 */
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo>{ //implementamos un método para comparar los nombres que serán ordenados más adelantes//
         //declaramos las variables privadas, para que no sean accesadas desde otra clase.
         private String nombre;
         private int fechaDeLanzamiento;
@@ -12,17 +12,25 @@ public class Titulo {
         private boolean incluidoEnElPlan;
         private double sumaDeLasEvaluaciones;
         private int totalDeEvaluaciones;//contador de todas las evaluaciones realizadas
+
+                
+        public Titulo(String nombre, int fechaDeLanzamiento) {
+            this.nombre = nombre;
+            this.fechaDeLanzamiento = fechaDeLanzamiento;
+        }
     
         //Métodos set(para colocar datos) y get(para obtener datos)
     
         /*llamamos u obtenemos los valores de nuesras variables privadas, 
         mediante métodos que nos retornen tales valores, utilizando la convencion 
         getNombreDeLaVariable*/
+
     
+
         public String getNombre() {
             return nombre;
         }
-    
+
         public int getFechaDeLanzamiento() {
             return fechaDeLanzamiento;
         }
@@ -40,13 +48,13 @@ public class Titulo {
         pero que nos permita colocar un valor específico para cada atributo,
         utilizando la convencion setNombreDeLaVariable*/
     
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
+        // public void setNombre(String nombre) {
+        //     this.nombre = nombre;
+        // }
     
-        public void setFechaDeLanzamiento(int fechaDeLanzamiento) {
-            this.fechaDeLanzamiento = fechaDeLanzamiento;
-        }
+        // public void setFechaDeLanzamiento(int fechaDeLanzamiento) {
+        //     this.fechaDeLanzamiento = fechaDeLanzamiento;
+        // }
     
         public void setDuracionEnMinutos(int duracionEnMinutos) {
             this.duracionEnMinutos = duracionEnMinutos;
@@ -78,5 +86,11 @@ public class Titulo {
         //creamos un método que calcule la media de calificaciones y nos la retorne como double
         public double calculaMedia(){
             return sumaDeLasEvaluaciones/totalDeEvaluaciones;
+        }
+
+        //reescribimos el método de comparación
+        @Override
+        public int compareTo(Titulo otroTitulo) {
+            return this.getNombre().compareTo(otroTitulo.getNombre());
         }
 }
